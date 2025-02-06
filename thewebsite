@@ -1,1 +1,108 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Liza ❤️</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        @keyframes floating-hearts {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 2rem;
+            animation: floating-hearts 5s linear infinite;
+        }
+        .poem {
+            font-size: 1.8em;
+            margin: 20px;
+            max-width: 600px;
+        }
+        .question {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .yes {
+            background: #ff4081;
+            color: white;
+        }
+        .no {
+            background: #555;
+            color: white;
+            position: absolute;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="romantic-music.mp3" type="audio/mpeg">
+    </audio>
+    <h1>Dear Liza, ❤️</h1>
+    <p class="poem">Roses are red, violets are blue,<br>
+        My heart beats faster when I’m with you.<br>
+        You are my sunshine, my dream come true,<br>
+        Forever and always, I’ll cherish you. 💕</p>
+    <p class="question">Will you be my Valentine? 💘</p>
+    <div class="buttons">
+        <button class="yes" onclick="showLove()">Yes 💖</button>
+        <button class="no" onmouseover="moveButton(this)">No 😢</button>
+    </div>
+    <script>
+        function showLove() {
+            alert("Yay! I love you, Liza! ❤️");
+            document.querySelector('.yes').style.animation = "shake 0.5s";
+        }
+        function moveButton(btn) {
+            let x = Math.random() * window.innerWidth * 0.8;
+            let y = Math.random() * window.innerHeight * 0.8;
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("heart");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }
+        setInterval(createHearts, 500);
+    </script>
+</body>
+</html>
